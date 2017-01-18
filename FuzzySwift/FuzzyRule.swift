@@ -9,8 +9,8 @@
 import Foundation
 
 public protocol FuzzyRule : CustomStringConvertible {
-    var name: String? { get set }
-    var statement: Statement { get }
+    var name: String{ get }
+    var statement: StatementGroup { get }
     var consequent: Consequent { get }
     
     var firingStrength: Double { get }

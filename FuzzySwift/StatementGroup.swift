@@ -8,14 +8,17 @@
 
 import Foundation
 
-public struct StatementGroup {
-    var leftStatment: StatementGroup
-    var rigthStatment: StatementGroup?
-    var op: StatementOperator
+public indirect enum StatementGroup : CustomStringConvertible {
+    case single(Statement)
+    case not(StatementGroup)
+    case and (StatementGroup, StatementGroup)
+    case or (StatementGroup, StatementGroup)
     
-    public init(leftStatment: StatementGroup, op: StatementOperator, rigthStatment: StatementGroup? = nil) {
-        self.leftStatment = leftStatment
-        self.op = op
-        self.rigthStatment = rigthStatment
+    public var description: String {
+        return describe(self)
+    }
+    
+    private func describe(_ sta: StatementGroup) -> String {
+        return "TODO"
     }
 }

@@ -12,21 +12,8 @@ public struct Statement : FuzzyClause {
     public var variable: FuzzyVariable!
     public var set: FuzzySet!
     
-    //TODO: Remove
-    public init() {
-        variable = nil
-        set = nil
-    }
-    
-    prefix public static func !(a: Statement) -> Statement {
-        return Statement()
-    }
-
-    public static func &&(lhs: Statement, rhs: @autoclosure () throws -> Statement) rethrows -> Statement {
-        return Statement()
-    }
-    
-    public static func ||(lhs: Statement, rhs: @autoclosure () throws -> Statement) rethrows -> Statement {
-        return Statement()
+    public init(variable: FuzzyVariable, set: FuzzySet) {
+        self.variable = variable
+        self.set = set
     }
 }

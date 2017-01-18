@@ -16,6 +16,7 @@ public protocol FuzzyClause : CustomStringConvertible {
 }
 
 extension FuzzyClause {
+    
     public var description: String {
         return variable.name + " is " + set.name
     }

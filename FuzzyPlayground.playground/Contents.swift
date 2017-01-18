@@ -120,10 +120,10 @@ let system = InferenceManager()
 system.add(variables: speed, rightDistance, leftDistance, frontalDistance)
 
 // Rules
-let rule: Rule  =
-    ((rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium)) => (speed == Velocity.fast)
+let rule = ((rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium))
+    => (speed == Velocity.fast)
 
-system.add(rule: rule)
+system.add(rule: rule.renamed("R1"))
 
 //Evaluation
 system.set(input: 50, for: frontalDistance)
