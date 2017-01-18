@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol FuzzySet {
+public protocol FuzzySet : CustomStringConvertible {
     static var sets: [FuzzySet] { get }
     
     var leftLimit: Double { get }
@@ -21,6 +21,10 @@ public protocol FuzzySet {
 }
 
 public extension FuzzySet {
+    public var description: String {
+        return name + "[\(leftLimit), [\(rightLimit)]"
+    }
+    
     var leftLimit: Double {
         return function.leftLimit
     }

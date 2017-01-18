@@ -8,14 +8,9 @@
 
 import Foundation
 
-public struct Statement : CustomStringConvertible {
-    private let variable: FuzzyVariable?
-    private let set: FuzzySet?
-    
-    public init(variable: FuzzyVariable, set: FuzzySet) {
-        self.variable = variable
-        self.set = set
-    }
+public struct Statement : FuzzyClause {
+    public var variable: FuzzyVariable!
+    public var set: FuzzySet!
     
     //TODO: Remove
     public init() {
@@ -33,9 +28,5 @@ public struct Statement : CustomStringConvertible {
     
     public static func ||(lhs: Statement, rhs: @autoclosure () throws -> Statement) rethrows -> Statement {
         return Statement()
-    }
-    
-    public var description: String {
-        return variable!.name + " is " + set!.name
     }
 }

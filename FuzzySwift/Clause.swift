@@ -8,16 +8,12 @@
 
 import Foundation
 
-public struct Clause : CustomStringConvertible {
-    private let variable: FuzzyVariable
-    private let set: FuzzySet
+public struct Consequent : FuzzyClause {
+    public private(set) var variable: FuzzyVariable!
+    public private(set) var set: FuzzySet!
     
     public init(variable: FuzzyVariable, set: FuzzySet) {
         self.variable = variable
         self.set = set
-    }
-    
-    public var description: String {
-        return variable.name + " is " + set.name
     }
 }

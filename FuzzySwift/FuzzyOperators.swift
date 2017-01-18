@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 infix operator =?
 
 public func =?(lhs: FuzzyVariable, rhs: FuzzySet) -> Statement {
@@ -18,10 +19,10 @@ public func =?(lhs: FuzzySet, rhs: FuzzyVariable) -> Statement {
 }
 
 infix operator =>
-public func =>(lhs: Statement, rhs: Clause) -> Rule {
-    return Rule()
+public func =>(lhs: Statement, rhs: Consequent) -> Rule {
+    return Rule(statement: lhs, consequent: rhs)
 }
 
-public func ==(lhs: FuzzyVariable, rhs: FuzzySet) -> Clause {
-    return Clause(variable: lhs, set: rhs)
+public func ==(lhs: FuzzyVariable, rhs: FuzzySet) -> Consequent {
+    return Consequent(variable: lhs, set: rhs)
 }
