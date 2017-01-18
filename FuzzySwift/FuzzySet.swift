@@ -11,8 +11,27 @@ import Foundation
 public protocol FuzzySet {
     static var sets: [FuzzySet] { get }
     
+    var leftLimit: Double { get }
+    var rightLimit: Double { get }
+    
     var function: FuzzyFunction { get }
     var name: String { get }
+    
+    func membershipDegree(of value: Double) -> Double
+}
+
+public extension FuzzySet {
+    var leftLimit: Double {
+        return function.leftLimit
+    }
+    
+    var rightLimit: Double {
+        return function.rightLimit
+    }
+    
+    func membershipDegree(of value: Double) -> Double {
+        return function.membershipDegree(of: value)
+    }
 }
 
 

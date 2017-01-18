@@ -1,5 +1,5 @@
 //
-//  Nameble.swift
+//  Defuzzier.swift
 //  FuzzySwift
 //
 //  Created by Jose Maria Puerta on 18/1/17.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Nameble {
-    var name: String { get }
+public protocol Defuzzier {
+    func defuzzify() -> Double
 }

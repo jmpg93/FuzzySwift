@@ -8,10 +8,7 @@
 
 import Foundation
 
-class Rule {
-    var name: String
-    
-    init(name: String) {
-        self.name = name
+public class Rule {
+    public init() {
     }
 }

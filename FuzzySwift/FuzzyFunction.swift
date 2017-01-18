@@ -12,5 +12,5 @@ public protocol FuzzyFunction {
     var leftLimit: Double { get }
     var rightLimit: Double { get }
 
-    func degreeOfMembership(of value: Double) -> Double
+    func membershipDegree(of value: Double) -> Double
 }

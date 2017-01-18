@@ -31,7 +31,7 @@ public class BaseFunction : FuzzyFunction {
         self.points = points
     }
     
-    public func degreeOfMembership(of value: Double) -> Double {
+    public func membershipDegree(of value: Double) -> Double {
         
         if (points.count == 0) {
             return 0

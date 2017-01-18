@@ -23,7 +23,7 @@ public class SingletonFunction : FuzzyFunction {
         self.value = value
     }
     
-    public func degreeOfMembership(of value: Double) -> Double {
+    public func membershipDegree(of  value: Double) -> Double {
         return self.value == value ? 1 : 0
     }
 }

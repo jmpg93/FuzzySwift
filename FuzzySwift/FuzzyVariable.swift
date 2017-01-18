@@ -8,12 +8,7 @@
 
 import Foundation
 
-public struct FuzzyVariable {
-    public let name: String
-    public let sets: [FuzzySet]
-    
-    init(name: String, sets: FuzzySet...) {
-        self.name = name
-        self.sets = sets
-    }
+public protocol FuzzyVariable {
+    var name: String { get }
+    var sets: [FuzzySet] { get }
 }

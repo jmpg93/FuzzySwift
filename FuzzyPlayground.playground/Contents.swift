@@ -5,9 +5,7 @@ import FuzzySwift
 import XCPlayground
 import Accelerate
 
-typealias DoubleStatement = Statement<Double>
-
-enum Distance: FuzzySet {
+enum Nearness: FuzzySet {
     case close
     case far
     case medium
@@ -16,7 +14,7 @@ enum Distance: FuzzySet {
         return _sets
     }
     
-    private static var _sets: [Distance] {
+    private static var _sets: [Nearness] {
         return [.close, .far, .medium]
     }
     
@@ -43,7 +41,7 @@ enum Distance: FuzzySet {
     }
 }
 
-enum Speed: FuzzySet {
+enum Velocity: FuzzySet {
     case slow
     case normal
     case fast
@@ -52,7 +50,7 @@ enum Speed: FuzzySet {
         return _sets
     }
     
-    private static var _sets: [Speed] {
+    private static var _sets: [Velocity] {
         return [.slow, .normal, .fast]
     }
     
@@ -79,4 +77,54 @@ enum Speed: FuzzySet {
     }
 }
 
+enum Distance : FuzzyVariable {
+    case frontal
+    case left
+    case right
+    
+    var name: String {
+        switch self {
+        case .frontal:
+            return "Frontal"
+        case .left:
+            return "Left"
+        case .right:
+            return "Right"
+        }
+    }
+    
+    var sets: [FuzzySet] {
+        return Nearness.sets
+    }
+}
 
+struct Speed : FuzzyVariable {
+    var name: String {
+        return "Speed"
+    }
+    
+    var sets: [FuzzySet] {
+        return Velocity.sets
+    }
+}
+
+// Fuzzy variables
+let speed = Speed()
+let rightDistance = Distance.right
+let leftDistance = Distance.left
+let frontalDistance = Distance.frontal
+
+
+// System
+let system = InferenceManager()
+system.add(variables: speed, rightDistance, leftDistance, frontalDistance)
+
+// Rules
+let rule: Rule  =
+    ((rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium)) => (speed == Velocity.fast)
+
+system.add(rule: rule)
+
+//Evaluation
+system.set(input: 50, for: frontalDistance)
+let value = system.evaluate(variable: speed)

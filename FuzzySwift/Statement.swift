@@ -8,24 +8,34 @@
 
 import Foundation
 
-public enum Statement<T : FuzzyLogical> {
-    indirect case and(Statement, Statement)
-    indirect case or(Statement, Statement)
-    indirect case clause(Statement, Statement)
-    case assing(FuzzySet, FuzzyVariable)
-}
-
-public protocol FuzzyLogical {
-    static func &&(lhs: Self, rhs: Self) -> Self
-    static func ||(lhs: Self, rhs: Self) -> Self
-}
-
-extension Double: FuzzyLogical {
-    public static func &&(lhs: Double, rhs: Double) -> Double {
-        return 1
+public struct Statement : CustomStringConvertible {
+    private let variable: FuzzyVariable?
+    private let set: FuzzySet?
+    
+    public init(variable: FuzzyVariable, set: FuzzySet) {
+        self.variable = variable
+        self.set = set
     }
     
-    public static func ||(lhs: Double, rhs: Double) -> Double {
-        return 0
+    //TODO: Remove
+    public init() {
+        variable = nil
+        set = nil
+    }
+    
+    prefix public static func !(a: Statement) -> Statement {
+        return Statement()
+    }
+
+    public static func &&(lhs: Statement, rhs: @autoclosure () throws -> Statement) rethrows -> Statement {
+        return Statement()
+    }
+    
+    public static func ||(lhs: Statement, rhs: @autoclosure () throws -> Statement) rethrows -> Statement {
+        return Statement()
+    }
+    
+    public var description: String {
+        return variable!.name + " is " + set!.name
     }
 }
