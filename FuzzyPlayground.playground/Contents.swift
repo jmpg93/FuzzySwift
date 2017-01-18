@@ -80,6 +80,3 @@ enum Speed: FuzzySet {
 }
 
 
-let var = FuzzyVariable(name:)
-
-
