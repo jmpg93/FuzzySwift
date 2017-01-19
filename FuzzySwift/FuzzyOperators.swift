@@ -39,7 +39,7 @@ infix operator =>
 infix operator =?
 
 // FuzzyVariable, FuzzySet
-public func =?(lhs: FuzzyVariable, rhs: FuzzySet) -> Statement {
+public func ==(lhs: FuzzyVariable, rhs: FuzzySet) -> Statement {
     return Statement(variable: lhs, set: rhs)
 }
 
@@ -49,12 +49,12 @@ public func =?(lhs: FuzzySet, rhs: FuzzyVariable) -> Statement {
 
 // Rule
 //TODO: Remove => use == in both cases ????.
-public func =>(lhs: StatementGroup, rhs: Consequent) -> Rule {
-    return Rule(name:"", if: lhs, then: rhs)
-}
+//public func =>(lhs: StatementGroup, rhs: Consequent) -> Rule {
+//    return Rule(name:"", if: lhs, then: rhs)
+//}
 
 // Consequent
-public func ==(lhs: FuzzyVariable, rhs: FuzzySet) -> Consequent {
+public func =>(lhs: FuzzyVariable, rhs: FuzzySet) -> Consequent {
     return Consequent(variable: lhs, set: rhs)
 }
 

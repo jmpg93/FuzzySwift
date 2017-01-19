@@ -118,17 +118,13 @@ let frontalDistance = Distance.frontal
 // System
 let system = InferenceManager(variables: [speed, rightDistance, leftDistance, frontalDistance])
 // Rules
-let cool = Rule(name: "Movement 1",
-                if: (rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium),
-                then: speed == Velocity.fast)
-
-
-let cooler = ((rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium))
-             => (speed == Velocity.fast)
-print(cool)
+let coolRule = Rule(name: "Movement 1",
+                    if: rightDistance == Nearness.far || frontalDistance == Nearness.medium,
+                    then: speed => Velocity.fast)
 
 
 
+//TODO: Improve input output sysetm
 //Evaluation
 //system.set(input: 50, for: frontalDistance)
 //let value = system.evaluate(variable: speed)

@@ -73,7 +73,6 @@ public class InferenceManager {
         } else {
             print("Could not find variable \(variable.name) in the system")
         }
-        
     }
     
     public func defuzzify(output: Output) -> Double {
