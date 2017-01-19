@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Statement : FuzzyClause {
-    public var variable: FuzzyVariable
-    public var set: FuzzySet
+    public let variable: FuzzyVariable
+    public let set: FuzzySet
     
     public init(variable: FuzzyVariable, set: FuzzySet) {
         self.variable = variable
