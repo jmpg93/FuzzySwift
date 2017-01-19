@@ -42,10 +42,14 @@ public class BaseFunction : FuzzyFunction {
         }
         
         for i in 1...points.count - 1 {
-            if (value <= points[i].x) {
+            if (value < points[i].x) {
                 let p1 = points[i]
                 let p0 = points[i-1]
                 
+                if (p1.x == p0.x) {
+                    // Vertical slope.
+                    return 1
+                }
                 let m = (p1.y - p0.y) / (p1.x - p0.x)
                 
                 return m * (value - p0.x) + p0.y

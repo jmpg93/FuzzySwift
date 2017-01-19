@@ -7,12 +7,7 @@
 //
 
 import Foundation
-
-//: Playground - noun: a place where people can play
-
-import Cocoa
 import FuzzySwift
-import Accelerate
 
 enum Nearness: FuzzySet {
     case close
@@ -30,7 +25,7 @@ enum Nearness: FuzzySet {
     var function: FuzzyFunction {
         switch self {
         case .close:
-            return TrapezoidalFunction(0, 20, 40, 60)
+            return TrapezoidalFunction(0, 40, 60, upperSide: .left)
         case .medium:
             return TrapezoidalFunction(40, 60, 80, 100)
         case .far:
@@ -50,6 +45,52 @@ enum Nearness: FuzzySet {
     }
 }
 
+enum TrapezoidalSet: FuzzySet {
+    case left
+    case center
+    case right
+    
+    static var sets: [FuzzySet] {
+        return _sets
+    }
+    
+    private static var _sets: [TrapezoidalSet] {
+        return [.left, .center, .right]
+    }
+    
+    var function: FuzzyFunction {
+        switch self {
+        case .left:
+            return TrapezoidalFunction(0, 40, 60, upperSide: .left)
+        case .center:
+            return TrapezoidalFunction(40, 60, 80, 100)
+        case .right:
+            return TrapezoidalFunction(80, 100, 120, 140)
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .left:
+            return "Left"
+        case .center:
+            return "Center"
+        case .right:
+            return "Right"
+        }
+    }
+}
+
+struct TrapezoidalVariable : FuzzyVariable {
+    var name: String {
+        return "TrapezoidalVariable"
+    }
+    
+    var sets: [FuzzySet] {
+        return TrapezoidalSet.sets
+    }
+}
+
 enum Velocity: FuzzySet {
     case slow
     case normal
@@ -66,7 +107,7 @@ enum Velocity: FuzzySet {
     var function: FuzzyFunction {
         switch self {
         case .slow:
-            return TrapezoidalFunction(0, 20, 40, 60)
+            return TrapezoidalFunction(0, 40, 60, upperSide: .left)
         case .normal:
             return TrapezoidalFunction(40, 60, 80, 100)
         case .fast:
@@ -106,6 +147,7 @@ enum Distance : FuzzyVariable {
         return Nearness.sets
     }
 }
+
 
 struct Speed : FuzzyVariable {
     var name: String {

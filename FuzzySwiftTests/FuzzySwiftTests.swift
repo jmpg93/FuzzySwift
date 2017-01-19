@@ -33,17 +33,19 @@ class FuzzySwiftTests: XCTestCase {
         system.add(variables: [speed, rightDistance, leftDistance, frontalDistance])
         
         // Rules
-        let rule = Rule(name: "R1", if: (rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium), then: speed == Velocity.fast)
+        let rule = Rule(name: "R1",
+                        if: (rightDistance == Nearness.far) || (frontalDistance == Nearness.medium),
+                        then: speed => Velocity.fast)
         
         print(rule)
         
         system.add(rule: rule)
         
         //Evaluation
-        system.set(input: 50, for: frontalDistance)
-        let value = system.evaluate(variable: speed)
+//        system.set(input: 50, for: frontalDistance)
+//        let value = system.evaluate(variable: speed)
         
-        print(value)
+//        print(value)
     }
     
 }

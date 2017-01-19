@@ -10,7 +10,7 @@ import Foundation
 
 public class TrapezoidalFunction : BaseFunction {
     
-    public enum CloseSide {
+    public enum UpperSide {
         case left
         case right
     }
@@ -30,9 +30,8 @@ public class TrapezoidalFunction : BaseFunction {
         )
     }
     
-    //TODO: Do not use p1, p1 or p3, p3. m calculation of function will get NaN
-    convenience public init(_ p1: Double, _ p2: Double, _ p3: Double, _ closeSide: CloseSide) {
-        switch closeSide {
+    convenience public init(_ p1: Double, _ p2: Double, _ p3: Double, upperSide: UpperSide) {
+        switch upperSide {
         case .left:
             self.init(p1, p1, p2, p3)
         case .right:
