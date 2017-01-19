@@ -18,7 +18,6 @@ public indirect enum StatementGroup : CustomStringConvertible {
         return describe(self)
     }
     
-    
     private func describe(_ sta: StatementGroup) -> String {
         switch sta {
         case let .single(sta):

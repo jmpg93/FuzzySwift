@@ -12,6 +12,7 @@ public typealias RuleBox = Dictionary<String, Rule>
 public typealias VariableBox = Dictionary<String, FuzzyVariable>
 public typealias InputBox = Dictionary<String, Double>
 
+//TODO: Make Protocol
 public class InferenceManager {
     private let defuzzier: Defuzzier
     public private(set) var inputBox: InputBox

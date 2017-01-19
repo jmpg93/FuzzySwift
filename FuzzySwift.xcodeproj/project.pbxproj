@@ -14,6 +14,8 @@
 		6C4630431E2F0B89001DD82C /* CentroidDefuzzifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4630421E2F0B89001DD82C /* CentroidDefuzzifier.swift */; };
 		6C4630471E303FF0001DD82C /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4630461E303FF0001DD82C /* Output.swift */; };
 		6C4630681E304DB5001DD82C /* FuzzySwiftTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4630671E304DB5001DD82C /* FuzzySwiftTestHelper.swift */; };
+		6C46308B1E304FC2001DD82C /* FuzzySwiftVariableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C46308A1E304FC2001DD82C /* FuzzySwiftVariableTests.swift */; };
+		6C46308D1E3056F1001DD82C /* RandomizeDefuzzier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C46308C1E3056F1001DD82C /* RandomizeDefuzzier.swift */; };
 		6C9BB9F11E2F84660091194F /* FuzzyClause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BB9F01E2F84650091194F /* FuzzyClause.swift */; };
 		6C9BB9F41E2F87D30091194F /* FuzzyRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BB9F31E2F87D30091194F /* FuzzyRule.swift */; };
 		6C9BB9F61E2F8E980091194F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BB9F51E2F8E980091194F /* Stack.swift */; };
@@ -51,6 +53,8 @@
 		6C4630421E2F0B89001DD82C /* CentroidDefuzzifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentroidDefuzzifier.swift; sourceTree = "<group>"; };
 		6C4630461E303FF0001DD82C /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 		6C4630671E304DB5001DD82C /* FuzzySwiftTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzySwiftTestHelper.swift; sourceTree = "<group>"; };
+		6C46308A1E304FC2001DD82C /* FuzzySwiftVariableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzySwiftVariableTests.swift; sourceTree = "<group>"; };
+		6C46308C1E3056F1001DD82C /* RandomizeDefuzzier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizeDefuzzier.swift; sourceTree = "<group>"; };
 		6C9BB9F01E2F84650091194F /* FuzzyClause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzyClause.swift; sourceTree = "<group>"; };
 		6C9BB9F31E2F87D30091194F /* FuzzyRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzyRule.swift; sourceTree = "<group>"; };
 		6C9BB9F51E2F8E980091194F /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -107,8 +111,30 @@
 			children = (
 				6C46303D1E2F073D001DD82C /* Defuzzier.swift */,
 				6C4630421E2F0B89001DD82C /* CentroidDefuzzifier.swift */,
+				6C46308C1E3056F1001DD82C /* RandomizeDefuzzier.swift */,
 			);
 			name = Defuzzifier;
+			sourceTree = "<group>";
+		};
+		6C46308E1E305769001DD82C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				6C9BB9F51E2F8E980091194F /* Stack.swift */,
+				6CCDBC781E2DB97E0014AEDE /* FuzzySwift.h */,
+				6CCDBC791E2DB97E0014AEDE /* Info.plist */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		6C46308F1E305780001DD82C /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				6CCDBC911E2DB9A10014AEDE /* Rule.swift */,
+				6CCDBC8F1E2DB9A10014AEDE /* Clause.swift */,
+				6CCDBC971E2DD2A00014AEDE /* Statement.swift */,
+				6C9BB9F71E2F90590091194F /* StatementGroup.swift */,
+			);
+			name = Rules;
 			sourceTree = "<group>";
 		};
 		6C9BB9F21E2F86CE0091194F /* Operators */ = {
@@ -153,19 +179,14 @@
 		6CCDBC771E2DB97E0014AEDE /* FuzzySwift */ = {
 			isa = PBXGroup;
 			children = (
+				6C46303F1E2F080A001DD82C /* InferenceManager.swift */,
+				6C4630461E303FF0001DD82C /* Output.swift */,
+				6C46308E1E305769001DD82C /* Domain */,
 				6C9BB9F21E2F86CE0091194F /* Operators */,
 				6C4630411E2F0B79001DD82C /* Defuzzifier */,
-				6CB1D5ED1E2EA84E003B0439 /* Functions */,
 				6C1A55E01E2EEE27003FA3BF /* Protocols */,
-				6CCDBC8F1E2DB9A10014AEDE /* Clause.swift */,
-				6C9BB9F51E2F8E980091194F /* Stack.swift */,
-				6C4630461E303FF0001DD82C /* Output.swift */,
-				6C46303F1E2F080A001DD82C /* InferenceManager.swift */,
-				6CCDBC971E2DD2A00014AEDE /* Statement.swift */,
-				6C9BB9F71E2F90590091194F /* StatementGroup.swift */,
-				6CCDBC911E2DB9A10014AEDE /* Rule.swift */,
-				6CCDBC781E2DB97E0014AEDE /* FuzzySwift.h */,
-				6CCDBC791E2DB97E0014AEDE /* Info.plist */,
+				6CB1D5ED1E2EA84E003B0439 /* Functions */,
+				6C46308F1E305780001DD82C /* Rules */,
 			);
 			path = FuzzySwift;
 			sourceTree = "<group>";
@@ -174,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				6CCDBC831E2DB97E0014AEDE /* FuzzySwiftTests.swift */,
+				6C46308A1E304FC2001DD82C /* FuzzySwiftVariableTests.swift */,
 				6C4630671E304DB5001DD82C /* FuzzySwiftTestHelper.swift */,
 				6CCDBC851E2DB97E0014AEDE /* Info.plist */,
 			);
@@ -305,6 +327,7 @@
 				6C4630391E2EF9E5001DD82C /* FuzzyOperators.swift in Sources */,
 				6CCDBC931E2DB9A10014AEDE /* FuzzyVariable.swift in Sources */,
 				6CB1D5F31E2EA92D003B0439 /* Point.swift in Sources */,
+				6C46308D1E3056F1001DD82C /* RandomizeDefuzzier.swift in Sources */,
 				6C9BB9F41E2F87D30091194F /* FuzzyRule.swift in Sources */,
 				6C4630431E2F0B89001DD82C /* CentroidDefuzzifier.swift in Sources */,
 				6CB1D5EF1E2EA870003B0439 /* TrapezoidalFunction.swift in Sources */,
@@ -319,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C46308B1E304FC2001DD82C /* FuzzySwiftVariableTests.swift in Sources */,
 				6C4630681E304DB5001DD82C /* FuzzySwiftTestHelper.swift in Sources */,
 				6CCDBC841E2DB97E0014AEDE /* FuzzySwiftTests.swift in Sources */,
 			);

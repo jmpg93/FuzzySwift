@@ -10,6 +10,7 @@ import Foundation
 
 public typealias FiringStrengthSet = (firingStrengthSet: Double, set: FuzzySet)
 
+//TODO: Make protocol
 public struct Output {
     public let variable: FuzzyVariable
     public private(set)var outputs: [FiringStrengthSet]

@@ -7,6 +7,9 @@
 //
 
 import Foundation
+
+//TODO: Set predecende.
+
  /*
 precedencegroup Comparative {
     associativity: left
@@ -30,6 +33,8 @@ precedencegroup Equivalence {
 infix operator => : Equivalence
 */
 
+//TODO: Remove => use == in both cases.
+
 infix operator =>
 infix operator =?
 
@@ -43,7 +48,7 @@ public func =?(lhs: FuzzySet, rhs: FuzzyVariable) -> Statement {
 }
 
 // Rule
-
+//TODO: Remove => use == in both cases ????.
 public func =>(lhs: StatementGroup, rhs: Consequent) -> Rule {
     return Rule(name:"", if: lhs, then: rhs)
 }

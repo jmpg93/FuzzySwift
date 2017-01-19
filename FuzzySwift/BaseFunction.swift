@@ -41,8 +41,8 @@ public class BaseFunction : FuzzyFunction {
             return firstPoint.y
         }
         
-        for i in 1...points.count {
-            if (value < points[i].x) {
+        for i in 1...points.count - 1 {
+            if (value <= points[i].x) {
                 let p1 = points[i]
                 let p0 = points[i-1]
                 

@@ -10,6 +10,11 @@ import Foundation
 
 public class TrapezoidalFunction : BaseFunction {
     
+    public enum CloseSide {
+        case left
+        case right
+    }
+    
     public init(_ leftBotton: Point, _ leftTop: Point, _ rightTop: Point, _ rightBottom: Point) {
         super.init([leftBotton, leftTop, rightTop, rightBottom])
     }
@@ -18,11 +23,20 @@ public class TrapezoidalFunction : BaseFunction {
         super.init(
             [
                 Point(leftBotton, 0),
-                Point(leftTop, 100),
-                Point(rightTop, 100),
+                Point(leftTop, 1),
+                Point(rightTop, 1),
                 Point(rightBottom, 0)
             ]
         )
     }
     
+    //TODO: Do not use p1, p1 or p3, p3. m calculation of function will get NaN
+    convenience public init(_ p1: Double, _ p2: Double, _ p3: Double, _ closeSide: CloseSide) {
+        switch closeSide {
+        case .left:
+            self.init(p1, p1, p2, p3)
+        case .right:
+            self.init(p1, p2, p3, p3)
+        }
+    }
 }
