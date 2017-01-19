@@ -18,7 +18,7 @@ public class InferenceManager {
     public private(set) var rulebox: RuleBox
     public private(set) var variableBox: VariableBox
     
-    public init(defuzzier: Defuzzier = CentroidDefuzzifier()) {
+    public init(defuzzier: Defuzzier = CentroidDefuzzifier(), variables: [FuzzyVariable] = []) {
         self.defuzzier = defuzzier
         
         self.rulebox = RuleBox()
@@ -40,7 +40,7 @@ public class InferenceManager {
         variableBox[variable.name] = variable
     }
     
-    public func add(variables: FuzzyVariable...) {
+    public func add(variables: [FuzzyVariable]) {
         variables.forEach(add)
     }
     
@@ -58,6 +58,10 @@ public class InferenceManager {
         rulebox[rule.name] = rule
     }
     
+    public func add(rules: [Rule]) {
+        rules.forEach(add)
+    }
+    
     public func add(rules: Rule...) {
         rules.forEach(add)
     }
@@ -71,14 +75,25 @@ public class InferenceManager {
         
     }
     
+    public func defuzzify(output: Output) -> Double {
+        return defuzzier.defuzzify(output: output)
+    }
+    
     public func evaluate(variable: FuzzyVariable) -> Double {
         defer { inputBox.removeAll() }
+        
+        var output = Output(variable: variable)
+        
         for rule in rulebox.values {
             if rule.consequent.variable.name == variable.name {
+                let associatedSet = rule.consequent.set
+                let firingStrength = rule.firingStrength(for: inputBox)
+                
+                output.add(firingStrength: firingStrength, for: associatedSet)
                 
             }
         }
-        
-        return 0
+
+        return defuzzify(output: output)
     }
 }

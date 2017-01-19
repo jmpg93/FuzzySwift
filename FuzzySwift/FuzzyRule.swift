@@ -9,11 +9,11 @@
 import Foundation
 
 public protocol FuzzyRule : CustomStringConvertible {
-    var name: String{ get }
+    var name: String { get }
     var statement: StatementGroup { get }
     var consequent: Consequent { get }
     
-    var firingStrength: Double { get }
+    func firingStrength(for inputBox: InputBox)  -> Double
 }
 
 public extension FuzzyRule {

@@ -13,34 +13,40 @@ public struct Rule : FuzzyRule {
     public let statement: StatementGroup
     public let consequent: Consequent
     
-    public var firingStrength: Double {
-        return calculateFiringStrength(statement: statement, consequent: consequent)
+    public func firingStrength(for inputBox: InputBox)  -> Double {
+        return evaluate(statement, for: inputBox)
     }
     
-    public init(name: String, statement: StatementGroup, consequent: Consequent) {
+    public init(name: String, if statement: StatementGroup, then consequent: Consequent) {
         self.name = name
         self.statement = statement
         self.consequent = consequent
     }
     
     public func renamed(_ name: String) -> Rule {
-        return Rule(name: name, statement: self.statement, consequent: self.consequent)
+        return Rule(name: name, if: statement, then: consequent)
     }
     
-    fileprivate func calculateFiringStrength(statement: StatementGroup, consequent: Consequent) -> Double {
-        return evaluate(statement)
-    }
-    
-    fileprivate func evaluate(_ statementGroup: StatementGroup) -> Double {
+    fileprivate func evaluate(_ statementGroup: StatementGroup, for inputBox: InputBox) -> Double {
         switch statementGroup {
         case let .single(sta):
-            return sta.evaluate()
+            return sta.evaluate(inputBox)
         case let .not(sta):
-            return 1 - evaluate(sta)
+            return 1 - evaluate(sta, for: inputBox)
         case let .and (leftSta, rightSta):
-            return min(evaluate(leftSta), evaluate(rightSta))
+            return min(evaluate(leftSta, for: inputBox), evaluate(rightSta, for: inputBox))
         case let .or (leftSta, rightSta):
-            return max(evaluate(leftSta), evaluate(rightSta))
+            return max(evaluate(leftSta, for: inputBox), evaluate(rightSta, for: inputBox))
+        }
+    }
+}
+
+fileprivate extension FuzzyClause {
+    func evaluate(_ inputBox: InputBox) -> Double {
+        if let currentStatement = inputBox[variable.name] {
+            return evaluate(value: currentStatement)
+        } else {
+            return 0
         }
     }
 }

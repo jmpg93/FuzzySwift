@@ -9,10 +9,10 @@
 import Foundation
 
 public protocol FuzzyClause : CustomStringConvertible {
-    var variable: FuzzyVariable!{ get }
-    var set: FuzzySet! { get }
+    var variable: FuzzyVariable { get }
+    var set: FuzzySet { get }
     
-    func evaluate() -> Double
+    func evaluate(value: Double) -> Double
 }
 
 extension FuzzyClause {
@@ -21,7 +21,7 @@ extension FuzzyClause {
         return variable.name + " is " + set.name
     }
     
-    public func evaluate() -> Double {
-        return set.membershipDegree(of: 0)
+    public func evaluate(value: Double) -> Double {
+        return set.membershipDegree(of: value)
     }
 }

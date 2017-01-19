@@ -1,8 +1,17 @@
+//
+//  FuzzySwiftTestHelper.swift
+//  FuzzySwift
+//
+//  Created by Jose Maria Puerta on 19/1/17.
+//  Copyright © 2017 Jose Maria Puerta. All rights reserved.
+//
+
+import Foundation
+
 //: Playground - noun: a place where people can play
 
 import Cocoa
 import FuzzySwift
-import XCPlayground
 import Accelerate
 
 enum Nearness: FuzzySet {
@@ -107,25 +116,3 @@ struct Speed : FuzzyVariable {
         return Velocity.sets
     }
 }
-
-// Fuzzy variables
-let speed = Speed()
-let rightDistance = Distance.right
-let leftDistance = Distance.left
-let frontalDistance = Distance.frontal
-
-
-// System
-let system = InferenceManager()
-system.add(variables: [speed, rightDistance, leftDistance, frontalDistance])
-
-// Rules
-let rule = ((rightDistance =? Nearness.far) || (frontalDistance =? Nearness.medium)) => (speed == Velocity.fast)
-
-//print(rule)
-
-system.add(rule: rule.renamed("R1"))
-
-//Evaluation
-//system.set(input: 50, for: frontalDistance)
-//let value = system.evaluate(variable: speed)

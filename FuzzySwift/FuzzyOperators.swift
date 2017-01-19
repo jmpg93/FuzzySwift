@@ -45,7 +45,7 @@ public func =?(lhs: FuzzySet, rhs: FuzzyVariable) -> Statement {
 // Rule
 
 public func =>(lhs: StatementGroup, rhs: Consequent) -> Rule {
-    return Rule(name:"", statement: lhs, consequent: rhs)
+    return Rule(name:"", if: lhs, then: rhs)
 }
 
 // Consequent

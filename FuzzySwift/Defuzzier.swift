@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Defuzzier {
-    func defuzzify() -> Double
+    func defuzzify(output: Output) -> Double
 }

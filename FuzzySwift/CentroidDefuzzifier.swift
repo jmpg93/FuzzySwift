@@ -15,7 +15,29 @@ public class CentroidDefuzzifier : Defuzzier {
         self.intervals = intervals
     }
     
-    public func defuzzify() -> Double {
-        return 0.0
+    public func defuzzify(output: Output) -> Double {
+        
+        var weightSum: Double = 0
+        var membershipSum: Double = 0
+        
+        let end = output.variable.end
+        let beginning = output.variable.beginning
+        let increment =  end - beginning
+        
+        for value in stride(from: beginning, to: end, by: increment) {
+            for (firingStrength, set) in output.outputs {
+                let membership = output.variable.membership(of: set, value: value)
+                let constrainedMembership = min(membership, firingStrength)
+                
+                weightSum += (value * constrainedMembership)
+                membershipSum += constrainedMembership
+            }
+        }
+        
+        if ( membershipSum == 0 ) {
+            print("The numerical output in unavaliable. All memberships are zero.")
+        }
+        
+        return weightSum / membershipSum
     }
 }
