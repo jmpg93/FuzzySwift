@@ -123,8 +123,9 @@ let coolRule = Rule(name: "Movement 1",
                     then: speed => Velocity.fast)
 
 
+print(coolRule)
 
-//TODO: Improve input output sysetm
+//TODO: Improve input output system
 //Evaluation
 //system.set(input: 50, for: frontalDistance)
 //let value = system.evaluate(variable: speed)
