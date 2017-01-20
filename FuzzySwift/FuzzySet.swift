@@ -37,5 +37,3 @@ public extension FuzzySet {
         return function.membershipDegree(of: value)
     }
 }
-
-

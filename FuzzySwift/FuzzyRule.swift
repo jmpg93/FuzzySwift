@@ -12,20 +12,14 @@ public protocol FuzzyRule : CustomStringConvertible {
     var name: String { get }
     
     var statement: ClauseGroup { get }
-    var consequent: Clause { get }
+    var consequence: Clause { get }
     
-    func firingStrength(for inputBox: InputBox)  -> Double
+    func firingStrength(for inputBox: FuzzyInput)  -> Double
 }
 
 public extension FuzzyRule {
     // CustomStringConvertible
     public var description: String {
-        return "\(name): if \(statement) then \(consequent)"
+        return "\(name): if \(statement) then \(consequence)"
     }
-}
-
-extension Equatable where Self: FuzzyRule {}
-
-func == (lhs: FuzzyRule, rhs: FuzzyRule) -> Bool {
-    return lhs.name == rhs.name
 }

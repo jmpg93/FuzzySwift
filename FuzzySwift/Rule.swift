@@ -11,40 +11,40 @@ import Foundation
 public struct Rule : FuzzyRule {
     public let name: String
     public let statement: ClauseGroup
-    public let consequent: Clause
+    public let consequence: Clause
     
-    public func firingStrength(for inputBox: InputBox)  -> Double {
-        return evaluate(statement, for: inputBox)
+    public func firingStrength(for input: FuzzyInput)  -> Double {
+        return evaluate(statement, for: input)
     }
     
-    public init(name: String, if statement: ClauseGroup, then consequent: Clause) {
+    public init(name: String, if statement: ClauseGroup, then consequence: Clause) {
         self.name = name
         self.statement = statement
-        self.consequent = consequent
+        self.consequence = consequence
     }
     
     public func renamed(_ name: String) -> Rule {
-        return Rule(name: name, if: statement, then: consequent)
+        return Rule(name: name, if: statement, then: consequence)
     }
     
-    fileprivate func evaluate(_ statementGroup: ClauseGroup, for inputBox: InputBox) -> Double {
+    fileprivate func evaluate(_ statementGroup: ClauseGroup, for input: FuzzyInput) -> Double {
         switch statementGroup {
         case let .single(sta):
-            return sta.evaluate(inputBox)
+            return sta.evaluate(input)
         case let .not(sta):
-            return 1 - evaluate(sta, for: inputBox)
+            return 1 - evaluate(sta, for: input)
         case let .and (leftSta, rightSta):
-            return min(evaluate(leftSta, for: inputBox), evaluate(rightSta, for: inputBox))
+            return min(evaluate(leftSta, for: input), evaluate(rightSta, for: input))
         case let .or (leftSta, rightSta):
-            return max(evaluate(leftSta, for: inputBox), evaluate(rightSta, for: inputBox))
+            return max(evaluate(leftSta, for: input), evaluate(rightSta, for: input))
         }
     }
 }
 
 fileprivate extension FuzzyClause {
-    func evaluate(_ inputBox: InputBox) -> Double {
-        if let currentStatement = inputBox[variable.name] {
-            return evaluate(value: currentStatement)
+    func evaluate(_ input: FuzzyInput) -> Double {
+        if self.variable.name == input.variable.name {
+            return evaluate(value: input.value)
         } else {
             return 0
         }

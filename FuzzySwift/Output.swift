@@ -8,25 +8,11 @@
 
 import Foundation
 
-public typealias FiringStrengthSet = (firingStrengthSet: Double, set: FuzzySet)
-
-//TODO: Make protocol
-public struct Output : CustomStringConvertible {
+public struct Output : FuzzyOutput {
     public let variable: FuzzyVariable
-    public private(set)var outputs: [FiringStrengthSet]
-    
+    public var outputs: [FiringStrengthSet]
     public init(variable: FuzzyVariable) {
         self.variable = variable
         self.outputs = []
-    }
-    
-    public mutating func add(firingStrength: Double, for set: FuzzySet) {
-        self.outputs.append(
-            (firingStrength, set)
-        )
-    }
-    
-    public var description: String {
-        return "\(variable). Outputs: \(outputs)"
     }
 }

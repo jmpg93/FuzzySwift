@@ -25,4 +25,3 @@ public extension FuzzyRuleSet {
         return MaxOperator()
     }
 }
-

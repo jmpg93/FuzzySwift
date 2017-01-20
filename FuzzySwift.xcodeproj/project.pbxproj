@@ -40,6 +40,9 @@
 		6CE9A98E1E32725C003EDF2E /* FuzzyOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE9A98D1E32725C003EDF2E /* FuzzyOperator.swift */; };
 		6CE9A9901E327311003EDF2E /* MaxOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE9A98F1E327311003EDF2E /* MaxOperator.swift */; };
 		6CE9A9921E327349003EDF2E /* MinOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE9A9911E327349003EDF2E /* MinOperator.swift */; };
+		6CE9A9941E327CA8003EDF2E /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE9A9931E327CA8003EDF2E /* Input.swift */; };
+		6CE9A9961E328292003EDF2E /* FuzzyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE9A9951E328292003EDF2E /* FuzzyInput.swift */; };
+		6CE9A9981E328445003EDF2E /* FuzzyOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE9A9971E328445003EDF2E /* FuzzyOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		6CE9A98D1E32725C003EDF2E /* FuzzyOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzyOperator.swift; sourceTree = "<group>"; };
 		6CE9A98F1E327311003EDF2E /* MaxOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxOperator.swift; sourceTree = "<group>"; };
 		6CE9A9911E327349003EDF2E /* MinOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinOperator.swift; sourceTree = "<group>"; };
+		6CE9A9931E327CA8003EDF2E /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		6CE9A9951E328292003EDF2E /* FuzzyInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzyInput.swift; sourceTree = "<group>"; };
+		6CE9A9971E328445003EDF2E /* FuzzyOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuzzyOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,13 +121,15 @@
 			isa = PBXGroup;
 			children = (
 				6CCDBC901E2DB9A10014AEDE /* FuzzyVariable.swift */,
-				6C9BB9F01E2F84650091194F /* FuzzyClause.swift */,
 				6CCDBC951E2DD2740014AEDE /* FuzzySet.swift */,
+				6C9BB9F01E2F84650091194F /* FuzzyClause.swift */,
 				6CB1D5EA1E2EA6C1003B0439 /* FuzzyFunction.swift */,
 				6C1A55DD1E2EC194003FA3BF /* PiecewiseBaseFunction.swift */,
 				6C9BB9F31E2F87D30091194F /* FuzzyRule.swift */,
 				6CE9A98A1E32595B003EDF2E /* FuzzyRuleSet.swift */,
 				6CE9A98D1E32725C003EDF2E /* FuzzyOperator.swift */,
+				6CE9A9951E328292003EDF2E /* FuzzyInput.swift */,
+				6CE9A9971E328445003EDF2E /* FuzzyOutput.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				6C46303F1E2F080A001DD82C /* InferenceManager.swift */,
+				6CE9A9931E327CA8003EDF2E /* Input.swift */,
 				6C4630461E303FF0001DD82C /* Output.swift */,
 				6C46308E1E305769001DD82C /* Domain */,
 				6C1A55E01E2EEE27003FA3BF /* Protocols */,
@@ -362,6 +371,7 @@
 				6CE9A98E1E32725C003EDF2E /* FuzzyOperator.swift in Sources */,
 				6CCDBC931E2DB9A10014AEDE /* FuzzyVariable.swift in Sources */,
 				6CB1D5F31E2EA92D003B0439 /* Point.swift in Sources */,
+				6CE9A9941E327CA8003EDF2E /* Input.swift in Sources */,
 				6C46308D1E3056F1001DD82C /* RandomizeDefuzzier.swift in Sources */,
 				6C9BB9F41E2F87D30091194F /* FuzzyRule.swift in Sources */,
 				6C4630431E2F0B89001DD82C /* CentroidDefuzzifier.swift in Sources */,
@@ -369,8 +379,10 @@
 				6CE9A98B1E32595B003EDF2E /* FuzzyRuleSet.swift in Sources */,
 				6C4630951E315F5E001DD82C /* GaussianFunction.swift in Sources */,
 				6C4630401E2F080A001DD82C /* InferenceManager.swift in Sources */,
+				6CE9A9961E328292003EDF2E /* FuzzyInput.swift in Sources */,
 				6C9BB9F81E2F90590091194F /* ClauseGroup.swift in Sources */,
 				6CCDBC921E2DB9A10014AEDE /* Clause.swift in Sources */,
+				6CE9A9981E328445003EDF2E /* FuzzyOutput.swift in Sources */,
 				6C4630931E315F47001DD82C /* TriangularFunction.swift in Sources */,
 				6C4630971E317A6C001DD82C /* PiecewiseFunction.swift in Sources */,
 			);

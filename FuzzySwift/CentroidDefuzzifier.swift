@@ -35,7 +35,7 @@ public class CentroidDefuzzifier : Defuzzier {
         }
         
         if ( membershipSum == 0 ) {
-            print("The numerical output in unavaliable. All memberships are zero.")
+            print("WTF")
         }
         
         return weightSum / membershipSum

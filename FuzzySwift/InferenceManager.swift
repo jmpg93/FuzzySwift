@@ -8,71 +8,27 @@
 
 import Foundation
 
-public typealias RuleBox = Dictionary<String, Rule>
-public typealias VariableBox = Dictionary<String, FuzzyVariable>
-public typealias InputBox = Dictionary<String, Double>
-
-//TODO: Make Protocol
 public class InferenceManager {
     private let defuzzier: Defuzzier
-    public private(set) var inputBox: InputBox
-    public private(set) var rulebox: RuleBox
-    public private(set) var variableBox: VariableBox
+    public private(set) var ruleSets : [FuzzyRuleSet]
+    public private(set) var inputs: [String : Input]
     
-    public init(defuzzier: Defuzzier = CentroidDefuzzifier(), variables: [FuzzyVariable] = []) {
+    public init(defuzzier: Defuzzier = CentroidDefuzzifier(), ruleSets: [FuzzyRuleSet] = []) {
         self.defuzzier = defuzzier
-        
-        self.rulebox = RuleBox()
-        self.variableBox = VariableBox()
-        self.inputBox = InputBox()
+        self.ruleSets = ruleSets
+        self.inputs = [:]
     }
     
-    public func add(variable: FuzzyVariable) {
-        if variable.name.isEmpty {
-            print("A rule with no name cannot be added to the system")
-            return
-        }
-        
-        if variableBox.contains(where: { $0.key == variable.name }) {
-            print("A rule with the name \(variable.name) was already in the system")
-            return
-        }
-        
-        variableBox[variable.name] = variable
+    public func add(ruleSet: FuzzyRuleSet) {
+        ruleSets += [ruleSet]
     }
     
-    public func add(variables: [FuzzyVariable]) {
-        variables.forEach(add)
-    }
-    
-    public func add(rule: Rule) {
-        if rule.name.isEmpty {
-            print("A rule with no name cannot be added to the system")
-            return
-        }
-        
-        if rulebox.contains(where: { $0.key == rule.name }) {
-            print("A rule with the name \(rule.name) was already in the system")
-            return
-        }
-        
-        rulebox[rule.name] = rule
-    }
-    
-    public func add(rules: [Rule]) {
-        rules.forEach(add)
-    }
-    
-    public func add(rules: Rule...) {
-        rules.forEach(add)
+    public func add(ruleSets: [FuzzyRuleSet]) {
+        ruleSets.forEach(add)
     }
     
     public func set(input: Double, for variable: FuzzyVariable) {
-        if let variable = variableBox[variable.name] {
-            inputBox[variable.name] = input
-        } else {
-            print("Could not find variable \(variable.name) in the system")
-        }
+       inputs[variable.name] = Input(variable: variable, value: input)
     }
     
     public func defuzzify(output: Output) -> Double {
@@ -80,20 +36,32 @@ public class InferenceManager {
     }
     
     public func evaluate(variable: FuzzyVariable) -> Double {
-        defer { inputBox.removeAll() }
+        defer { inputs = [:] }
         
         var output = Output(variable: variable)
         
-        for rule in rulebox.values {
-            if rule.consequent.variable.name == variable.name {
-                let associatedSet = rule.consequent.set
-                let firingStrength = rule.firingStrength(for: inputBox)
+        //For every rule we search for a match of evaluating variable and consequence.
+        for rule in rules where rule.consequence.variable.name == variable.name {
+            
+            //If we got a match, then evaluate the rule with the input and add an output
+            if let input = inputs[variable.name] {
+                
+                let associatedSet = rule.consequence.set
+                let firingStrength = rule.firingStrength(for: input)
                 
                 output.add(firingStrength: firingStrength, for: associatedSet)
-                
             }
         }
-
+        
         return defuzzify(output: output)
     }
+    
+    private var rules: [Rule] {
+        return ruleSets.flatMap({ $0.rules })
+    }
+    
+    private var variables: [FuzzyVariable] {
+        return ruleSets.flatMap({ $0.variables })
+    }
+    
 }
