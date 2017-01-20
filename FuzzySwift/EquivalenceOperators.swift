@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 precedencegroup Equivalence {
     associativity: left
 }

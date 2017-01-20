@@ -9,5 +9,6 @@
 import Foundation
 
 public protocol Defuzzier {
+    var defaultValue: Double { get set }
     func defuzzify(output: Output) -> Double
 }

@@ -1,5 +1,5 @@
 //
-//  StatementGroup.swift
+//  ClauseGroup.swift
 //  FuzzySwift
 //
 //  Created by Jose Maria Puerta on 18/1/17.
@@ -17,7 +17,7 @@ public indirect enum ClauseGroup : CustomStringConvertible {
     public var description: String {
         return describe(self)
     }
-    
+
     private func describe(_ sta: ClauseGroup) -> String {
         switch sta {
         case let .single(sta):

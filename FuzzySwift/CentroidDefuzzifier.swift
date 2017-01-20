@@ -11,6 +11,8 @@ import Foundation
 public class CentroidDefuzzifier : Defuzzier {
     public private(set) var intervals: Double
     
+    public var defaultValue: Double = 0
+    
     public init(intervals: Double = 5) {
         self.intervals = intervals
     }
@@ -46,7 +48,7 @@ public class CentroidDefuzzifier : Defuzzier {
         }
         
         if ( membershipSum == 0 ) {
-            print("WTF")
+            return defaultValue
         }
         
         return weightSum / membershipSum

@@ -154,16 +154,6 @@
 			name = Domain;
 			sourceTree = "<group>";
 		};
-		6C46308F1E305780001DD82C /* Rules */ = {
-			isa = PBXGroup;
-			children = (
-				6CCDBC911E2DB9A10014AEDE /* Rule.swift */,
-				6CCDBC8F1E2DB9A10014AEDE /* Clause.swift */,
-				6C9BB9F71E2F90590091194F /* ClauseGroup.swift */,
-			);
-			name = Rules;
-			sourceTree = "<group>";
-		};
 		6C4630981E317D36001DD82C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,12 +211,14 @@
 				6C46303F1E2F080A001DD82C /* InferenceManager.swift */,
 				6CE9A9931E327CA8003EDF2E /* Input.swift */,
 				6C4630461E303FF0001DD82C /* Output.swift */,
-				6C46308E1E305769001DD82C /* Domain */,
+				6CCDBC911E2DB9A10014AEDE /* Rule.swift */,
+				6CCDBC8F1E2DB9A10014AEDE /* Clause.swift */,
+				6C9BB9F71E2F90590091194F /* ClauseGroup.swift */,
+				6CB1D5ED1E2EA84E003B0439 /* Functions */,
+				6C4630411E2F0B79001DD82C /* Defuzzifier */,
 				6C1A55E01E2EEE27003FA3BF /* Protocols */,
 				6C9BB9F21E2F86CE0091194F /* Operators */,
-				6C4630411E2F0B79001DD82C /* Defuzzifier */,
-				6CB1D5ED1E2EA84E003B0439 /* Functions */,
-				6C46308F1E305780001DD82C /* Rules */,
+				6C46308E1E305769001DD82C /* Domain */,
 			);
 			path = FuzzySwift;
 			sourceTree = "<group>";
