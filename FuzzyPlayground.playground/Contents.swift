@@ -2,11 +2,11 @@
 import FuzzySwift
 import XCPlayground
 
-let speedRuleSet: SpeedRuleSet = SpeedRuleSet()
+let ruleSet: SpeedRuleSet = SpeedRuleSet()
 
-let system = InferenceManager(ruleSets: [speedRuleSet])
-system.set(input: 10, for: speedRuleSet.frontalDistance)
-let evaluated = system.evaluate(variable: speedRuleSet.speed)
+let system = InferenceManager(ruleSets: [ruleSet])
+system.set(input: 10, for: ruleSet.frontalDistance)
+let evaluated = system.evaluate(variable: ruleSet.speed)
 
 
 print("Hola")

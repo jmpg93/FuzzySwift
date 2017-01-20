@@ -28,7 +28,8 @@ public class InferenceManager {
     }
     
     public func set(input: Double, for variable: FuzzyVariable) {
-       inputs[variable.name] = Input(variable: variable, value: input)
+        print("Setting input \(input), for \(variable.name)")
+        inputs[variable.name] = Input(variable: variable, value: input)
     }
     
     public func defuzzify(output: Output) -> Double {
@@ -36,20 +37,18 @@ public class InferenceManager {
     }
     
     public func evaluate(variable: FuzzyVariable) -> Double {
-        defer { inputs = [:] }
+        //defer { inputs = [:] }
         
         var output = Output(variable: variable)
         
         //For every rule we search for a match of evaluating variable and consequence.
         for rule in rules where rule.consequence.variable.name == variable.name {
-            
             //If we got a match, then evaluate the rule with the input and add an output
-            if let input = inputs[variable.name] {
-                
+            for input in inputs.values {
                 let associatedSet = rule.consequence.set
                 let firingStrength = rule.firingStrength(for: input)
                 
-                output.add(firingStrength: firingStrength, for: associatedSet)
+                output.add(firingStrength: firingStrength, for: associatedSet, by: rule)
             }
         }
         

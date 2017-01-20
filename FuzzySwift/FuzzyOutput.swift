@@ -8,13 +8,13 @@
 
 import Foundation
 
-public typealias FiringStrengthSet = (firingStrengthSet: Double, set: FuzzySet)
+public typealias FiringStrengthSet = (firingStrengthSet: Double, set: FuzzySet, rule: FuzzyRule)
 
 public protocol FuzzyOutput : CustomStringConvertible {
     var variable: FuzzyVariable { get }
     var outputs: [FiringStrengthSet] { get set }
     
-    mutating func add(firingStrength: Double, for set: FuzzySet)
+    mutating func add(firingStrength: Double, for set: FuzzySet, by rule: FuzzyRule)
 }
 
 public extension FuzzyOutput {
@@ -22,7 +22,7 @@ public extension FuzzyOutput {
         return "\(variable). Outputs: \(outputs)"
     }
     
-    public mutating func add(firingStrength: Double, for set: FuzzySet) {
-        self.outputs.append( (firingStrength, set) )
+    public mutating func add(firingStrength: Double, for set: FuzzySet, by rule: FuzzyRule) {
+        self.outputs.append( (firingStrength, set, rule) )
     }
 }

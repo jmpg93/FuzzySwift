@@ -12,14 +12,11 @@ public struct SpeedRuleSet : FuzzyRuleSet {
     public var rules: [Rule] {
         return [
             Rule(name: "Movement 1",
-                 if: rightDistance == Nearness.far || frontalDistance == Nearness.medium,
-                 then: speed => Velocity.fast),
+                 if: frontalDistance == Nearness.far, then: speed => Velocity.fast),
             Rule(name: "Movement 2",
-                 if: rightDistance == Nearness.far || frontalDistance == Nearness.medium,
-                 then: speed => Velocity.fast),
+                 if: frontalDistance == Nearness.medium, then: speed => Velocity.normal),
             Rule(name: "Movement 3",
-                 if: rightDistance == Nearness.far || frontalDistance == Nearness.medium,
-                 then: speed => Velocity.fast)
+                 if: frontalDistance == Nearness.close, then: speed => Velocity.slow)
         ]
     }
     

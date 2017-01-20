@@ -17,11 +17,11 @@ public enum Velocity: FuzzySet {
     public var function: FuzzyFunction {
         switch self {
         case .slow:
-            return TrapetzoidalFunction(0, 20, 40, 60)
+            return TrapetzoidalFunction(0, 40, 60, upperSide: .left)
         case .normal:
             return TrapetzoidalFunction(40, 60, 80, 100)
         case .fast:
-            return TrapetzoidalFunction(80, 100, 120, 140)
+            return TrapetzoidalFunction(80, 100, 140,  upperSide: .right)
         }
     }
     
