@@ -19,6 +19,7 @@ public class InferenceManager {
         self.inputs = [:]
     }
     
+    //TODO: Check
     public func add(ruleSet: FuzzyRuleSet) {
         ruleSets += [ruleSet]
     }

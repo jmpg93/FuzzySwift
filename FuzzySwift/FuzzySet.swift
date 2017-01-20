@@ -25,15 +25,15 @@ public extension FuzzySet {
         return name + ": [\(leftLimit), \(rightLimit)]"
     }
     
-    var leftLimit: Double {
+    public var leftLimit: Double {
         return function.leftLimit
     }
     
-    var rightLimit: Double {
+    public var rightLimit: Double {
         return function.rightLimit
     }
     
-    func membershipDegree(of value: Double) -> Double {
+    public func membershipDegree(of value: Double) -> Double {
         return function.membershipDegree(of: value)
     }
 }

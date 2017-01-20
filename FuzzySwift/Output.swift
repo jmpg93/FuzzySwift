@@ -11,6 +11,7 @@ import Foundation
 public struct Output : FuzzyOutput {
     public let variable: FuzzyVariable
     public var outputs: [FiringStrengthSet]
+    
     public init(variable: FuzzyVariable) {
         self.variable = variable
         self.outputs = []

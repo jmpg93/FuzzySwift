@@ -17,11 +17,11 @@ public protocol FuzzyRuleSet {
 }
 
 public extension FuzzyRuleSet {
-    var andOperator: FuzzyOperator {
+    public var andOperator: FuzzyOperator {
         return MaxOperator()
     }
     
-    var orOperator: FuzzyOperator {
+    public var orOperator: FuzzyOperator {
         return MaxOperator()
     }
 }

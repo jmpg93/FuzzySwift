@@ -15,7 +15,7 @@ public protocol FuzzyClause : CustomStringConvertible {
     func evaluate(value: Double) -> Double
 }
 
-extension FuzzyClause {
+public extension FuzzyClause {
     
     public var description: String {
         return variable.name + " is " + set.name

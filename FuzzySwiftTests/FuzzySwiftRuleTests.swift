@@ -7,19 +7,11 @@
 //
 
 import Foundation
+
 import XCTest
 @testable import FuzzySwift
 
-class FuzzySwiftRuleTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
+class FuzzySwiftRuleTests: XCTestCase {    
     func testRuleFiringStrength() {
         
     }

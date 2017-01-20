@@ -13,15 +13,7 @@ import XCTest
 
 class FuzzySwiftFunctionTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testFunctionLimits() {
+    func testTrapezoidalFunction() {
         
         // Variables
         let trapezoidal = TrapezoidalVariable()

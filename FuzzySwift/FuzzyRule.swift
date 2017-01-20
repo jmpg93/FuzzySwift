@@ -18,7 +18,6 @@ public protocol FuzzyRule : CustomStringConvertible {
 }
 
 public extension FuzzyRule {
-    // CustomStringConvertible
     public var description: String {
         return "\(name): if \(statement) then \(consequence)"
     }

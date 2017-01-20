@@ -18,7 +18,7 @@ public protocol FuzzyVariable : CustomStringConvertible {
     func membership(of: FuzzySet, value: Double) -> Double
 }
 
-extension FuzzyVariable {
+public extension FuzzyVariable {
     public var description: String {
         return name + ": [" + sets.map({$0.name}).joined(separator: ", ") + "]"
     }
