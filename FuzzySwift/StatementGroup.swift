@@ -9,7 +9,7 @@
 import Foundation
 
 public indirect enum StatementGroup : CustomStringConvertible {
-    case single(Statement)
+    case single(Clause)
     case not(StatementGroup)
     case and (StatementGroup, StatementGroup)
     case or (StatementGroup, StatementGroup)

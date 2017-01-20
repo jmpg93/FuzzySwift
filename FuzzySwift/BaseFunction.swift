@@ -8,8 +8,11 @@
 
 import Foundation
 
-public class BaseFunction : FuzzyFunction {
-    public let points: [Point]
+public protocol BaseFunction : FuzzyFunction {
+    var points: [Point] { get }
+}
+
+extension BaseFunction {
     
     private var firstPoint : Point {
         return points.first!
@@ -25,10 +28,6 @@ public class BaseFunction : FuzzyFunction {
     
     public var rightLimit: Double {
         return points.last?.x ?? 0
-    }
-    
-    public init(_ points: [Point]) {
-        self.points = points
     }
     
     public func membershipDegree(of value: Double) -> Double {

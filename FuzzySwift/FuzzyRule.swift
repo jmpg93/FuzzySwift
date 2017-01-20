@@ -11,7 +11,7 @@ import Foundation
 public protocol FuzzyRule : CustomStringConvertible {
     var name: String { get }
     var statement: StatementGroup { get }
-    var consequent: Consequent { get }
+    var consequent: Clause { get }
     
     func firingStrength(for inputBox: InputBox)  -> Double
 }

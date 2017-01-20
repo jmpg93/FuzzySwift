@@ -11,13 +11,13 @@ import Foundation
 public struct Rule : FuzzyRule {
     public let name: String
     public let statement: StatementGroup
-    public let consequent: Consequent
+    public let consequent: Clause
     
     public func firingStrength(for inputBox: InputBox)  -> Double {
         return evaluate(statement, for: inputBox)
     }
     
-    public init(name: String, if statement: StatementGroup, then consequent: Consequent) {
+    public init(name: String, if statement: StatementGroup, then consequent: Clause) {
         self.name = name
         self.statement = statement
         self.consequent = consequent

@@ -20,7 +20,7 @@ public protocol FuzzyVariable : CustomStringConvertible {
 
 extension FuzzyVariable {
     public var description: String {
-        return name + " " + sets.map({$0.name}).joined(separator: ",")
+        return name + ": [" + sets.map({$0.name}).joined(separator: ", ") + "]"
     }
     
     public var beginning: Double {

@@ -1,5 +1,5 @@
 //
-//  Statement.swift
+//  Clause.swift
 //  FuzzySwift
 //
 //  Created by Jose Maria Puerta on 17/1/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Statement : FuzzyClause {
+public struct Clause : FuzzyClause {
     public let variable: FuzzyVariable
     public let set: FuzzySet
     

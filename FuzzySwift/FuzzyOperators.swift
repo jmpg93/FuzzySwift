@@ -8,60 +8,29 @@
 
 import Foundation
 
-//TODO: Set predecende.
-
- /*
-precedencegroup Comparative {
-    associativity: left
-    higherThan: Logical
-}
-
-infix operator =? : Comparative
-infix operator == : Comparative
-
-precedencegroup Logical {
-    associativity: left
-    higherThan: Equivalence
-}
-
-infix operator && : Logical
-infix operator || : Logical
 
 precedencegroup Equivalence {
     associativity: left
 }
-infix operator => : Equivalence
-*/
-
-//TODO: Remove => use == in both cases.
 
 infix operator =>
-infix operator =?
 
 // FuzzyVariable, FuzzySet
-public func ==(lhs: FuzzyVariable, rhs: FuzzySet) -> Statement {
-    return Statement(variable: lhs, set: rhs)
+public func ==(lhs: FuzzyVariable, rhs: FuzzySet) -> StatementGroup {
+    return .single(Clause(variable: lhs, set: rhs))
 }
 
-public func =?(lhs: FuzzySet, rhs: FuzzyVariable) -> Statement {
-    return Statement(variable: rhs, set: lhs)
+public func ==(lhs: FuzzySet, rhs: FuzzyVariable) -> StatementGroup {
+    return .single(Clause(variable: rhs, set: lhs))
 }
 
-// Rule
-//TODO: Remove => use == in both cases ????.
-//public func =>(lhs: StatementGroup, rhs: Consequent) -> Rule {
-//    return Rule(name:"", if: lhs, then: rhs)
-//}
-
-// Consequent
-public func =>(lhs: FuzzyVariable, rhs: FuzzySet) -> Consequent {
-    return Consequent(variable: lhs, set: rhs)
+// Clause
+public func =>(lhs: FuzzyVariable, rhs: FuzzySet) -> Clause {
+    return Clause(variable: lhs, set: rhs)
 }
-
-// Statements
 
 // Not Operator
-prefix public func !(a: Statement) -> StatementGroup {
+prefix public func !(a: Clause) -> StatementGroup {
     return .not(a.asStatementGroup)
 }
 
@@ -70,15 +39,15 @@ prefix public func !(a: StatementGroup) -> StatementGroup {
 }
 
 // And Operator
-public func &&(lhs: Statement, rhs: Statement) -> StatementGroup {
+public func &&(lhs: Clause, rhs: Clause) -> StatementGroup {
     return .and(lhs.asStatementGroup, rhs.asStatementGroup)
 }
 
-public func &&(lhs: StatementGroup, rhs: Statement) -> StatementGroup {
+public func &&(lhs: StatementGroup, rhs: Clause) -> StatementGroup {
     return .and(lhs, rhs.asStatementGroup)
 }
 
-public func &&(lhs: Statement, rhs: StatementGroup) -> StatementGroup {
+public func &&(lhs: Clause, rhs: StatementGroup) -> StatementGroup {
     return .and(lhs.asStatementGroup, rhs)
 }
 
@@ -87,15 +56,15 @@ public func &&(lhs: StatementGroup, rhs: StatementGroup) -> StatementGroup {
 }
 
 // Or Operator
-public func ||(lhs: Statement, rhs: Statement) -> StatementGroup {
+public func ||(lhs: Clause, rhs: Clause) -> StatementGroup {
     return .or(lhs.asStatementGroup, rhs.asStatementGroup)
 }
 
-public func ||(lhs: StatementGroup, rhs: Statement) -> StatementGroup {
+public func ||(lhs: StatementGroup, rhs: Clause) -> StatementGroup {
     return .or(lhs, rhs.asStatementGroup)
 }
 
-public func ||(lhs: Statement, rhs: StatementGroup) -> StatementGroup {
+public func ||(lhs: Clause, rhs: StatementGroup) -> StatementGroup {
     return .or(lhs.asStatementGroup, rhs)
 }
 
@@ -103,7 +72,7 @@ public func ||(lhs: StatementGroup, rhs: StatementGroup) -> StatementGroup {
     return .or(lhs, rhs)
 }
 
-fileprivate extension Statement {
+fileprivate extension Clause {
     var asStatementGroup: StatementGroup {
         return .single(self)
     }

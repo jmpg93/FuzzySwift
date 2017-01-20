@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SingletonFunction : FuzzyFunction {
+public struct SingletonFunction : FuzzyFunction {
     private let value: Double
     
     public var leftLimit: Double {

@@ -22,7 +22,7 @@ public protocol FuzzySet : CustomStringConvertible {
 
 public extension FuzzySet {
     public var description: String {
-        return name + "[\(leftLimit), [\(rightLimit)]"
+        return name + ": [\(leftLimit), \(rightLimit)]"
     }
     
     var leftLimit: Double {

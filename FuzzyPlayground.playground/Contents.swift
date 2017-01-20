@@ -21,11 +21,11 @@ enum Nearness: FuzzySet {
     var function: FuzzyFunction {
         switch self {
         case .close:
-            return TrapezoidalFunction(0, 20, 40, 60)
+            return TrapetzoidalFunction(0, 20, 40, 60)
         case .medium:
-            return TrapezoidalFunction(40, 60, 80, 100)
+            return TrapetzoidalFunction(40, 60, 80, 100)
         case .far:
-            return TrapezoidalFunction(80, 100, 120, 140)
+            return TrapetzoidalFunction(80, 100, 120, 140)
         }
     }
     
@@ -57,11 +57,11 @@ enum Velocity: FuzzySet {
     var function: FuzzyFunction {
         switch self {
         case .slow:
-            return TrapezoidalFunction(0, 20, 40, 60)
+            return TrapetzoidalFunction(0, 20, 40, 60)
         case .normal:
-            return TrapezoidalFunction(40, 60, 80, 100)
+            return TrapetzoidalFunction(40, 60, 80, 100)
         case .fast:
-            return TrapezoidalFunction(80, 100, 120, 140)
+            return TrapetzoidalFunction(80, 100, 120, 140)
         }
     }
     

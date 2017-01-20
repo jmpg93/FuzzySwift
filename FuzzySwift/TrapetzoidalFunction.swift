@@ -8,7 +8,8 @@
 
 import Foundation
 
-public class TrapezoidalFunction : BaseFunction {
+public struct TrapetzoidalFunction : BaseFunction {
+    public let points: [Point]
     
     public enum UpperSide {
         case left
@@ -16,21 +17,20 @@ public class TrapezoidalFunction : BaseFunction {
     }
     
     public init(_ leftBotton: Point, _ leftTop: Point, _ rightTop: Point, _ rightBottom: Point) {
-        super.init([leftBotton, leftTop, rightTop, rightBottom])
+        points = [leftBotton, leftTop, rightTop, rightBottom]
     }
     
     public init(_ leftBotton: Double, _ leftTop: Double, _ rightTop: Double, _ rightBottom: Double) {
-        super.init(
+        points =
             [
                 Point(leftBotton, 0),
                 Point(leftTop, 1),
                 Point(rightTop, 1),
                 Point(rightBottom, 0)
             ]
-        )
     }
     
-    convenience public init(_ p1: Double, _ p2: Double, _ p3: Double, upperSide: UpperSide) {
+    public init(_ p1: Double, _ p2: Double, _ p3: Double, upperSide: UpperSide) {
         switch upperSide {
         case .left:
             self.init(p1, p1, p2, p3)

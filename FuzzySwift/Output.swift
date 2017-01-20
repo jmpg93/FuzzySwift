@@ -11,7 +11,7 @@ import Foundation
 public typealias FiringStrengthSet = (firingStrengthSet: Double, set: FuzzySet)
 
 //TODO: Make protocol
-public struct Output {
+public struct Output : CustomStringConvertible {
     public let variable: FuzzyVariable
     public private(set)var outputs: [FiringStrengthSet]
     
@@ -24,5 +24,9 @@ public struct Output {
         self.outputs.append(
             (firingStrength, set)
         )
+    }
+    
+    public var description: String {
+        return "\(variable). Outputs: \(outputs)"
     }
 }

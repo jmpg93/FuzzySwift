@@ -22,14 +22,14 @@ public class CentroidDefuzzifier : Defuzzier {
         
         let end = output.variable.end
         let beginning = output.variable.beginning
-        let increment =  end - beginning
+        let increment =  (end - beginning) / intervals
         
-        for value in stride(from: beginning, to: end, by: increment) {
+        for segment in stride(from: beginning, to: end, by: increment) {
             for (firingStrength, set) in output.outputs {
-                let membership = output.variable.membership(of: set, value: value)
+                let membership = output.variable.membership(of: set, value: segment)
                 let constrainedMembership = min(membership, firingStrength)
                 
-                weightSum += (value * constrainedMembership)
+                weightSum += (segment * constrainedMembership)
                 membershipSum += constrainedMembership
             }
         }

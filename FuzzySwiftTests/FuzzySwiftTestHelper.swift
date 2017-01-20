@@ -9,41 +9,6 @@
 import Foundation
 import FuzzySwift
 
-enum Nearness: FuzzySet {
-    case close
-    case far
-    case medium
-    
-    static var sets: [FuzzySet] {
-        return _sets
-    }
-    
-    private static var _sets: [Nearness] {
-        return [.close, .far, .medium]
-    }
-    
-    var function: FuzzyFunction {
-        switch self {
-        case .close:
-            return TrapezoidalFunction(0, 40, 60, upperSide: .left)
-        case .medium:
-            return TrapezoidalFunction(40, 60, 80, 100)
-        case .far:
-            return TrapezoidalFunction(80, 100, 120, 140)
-        }
-    }
-    
-    var name: String {
-        switch self {
-        case .close:
-            return "Close"
-        case .far:
-            return "Far"
-        case .medium:
-            return "Medium"
-        }
-    }
-}
 
 enum TrapezoidalSet: FuzzySet {
     case left
@@ -61,11 +26,11 @@ enum TrapezoidalSet: FuzzySet {
     var function: FuzzyFunction {
         switch self {
         case .left:
-            return TrapezoidalFunction(0, 40, 60, upperSide: .left)
+            return TrapetzoidalFunction(0, 40, 60, upperSide: .left)
         case .center:
-            return TrapezoidalFunction(40, 60, 80, 100)
+            return TrapetzoidalFunction(40, 60, 80, 100)
         case .right:
-            return TrapezoidalFunction(80, 100, 120, 140)
+            return TrapetzoidalFunction(80, 100, 120, 140)
         }
     }
     
@@ -107,11 +72,11 @@ enum Velocity: FuzzySet {
     var function: FuzzyFunction {
         switch self {
         case .slow:
-            return TrapezoidalFunction(0, 40, 60, upperSide: .left)
+            return TrapetzoidalFunction(0, 40, 60, upperSide: .left)
         case .normal:
-            return TrapezoidalFunction(40, 60, 80, 100)
+            return TrapetzoidalFunction(40, 60, 80, 100)
         case .fast:
-            return TrapezoidalFunction(80, 100, 120, 140)
+            return TrapetzoidalFunction(80, 100, 120, 140)
         }
     }
     
@@ -124,6 +89,17 @@ enum Velocity: FuzzySet {
         case .fast:
             return "Fast"
         }
+    }
+}
+
+
+struct Speed : FuzzyVariable {
+    var name: String {
+        return "Speed"
+    }
+    
+    var sets: [FuzzySet] {
+        return Velocity.sets
     }
 }
 
@@ -148,13 +124,38 @@ enum Distance : FuzzyVariable {
     }
 }
 
-
-struct Speed : FuzzyVariable {
-    var name: String {
-        return "Speed"
+enum Nearness: FuzzySet {
+    case close
+    case far
+    case medium
+    
+    static var sets: [FuzzySet] {
+        return _sets
     }
     
-    var sets: [FuzzySet] {
-        return Velocity.sets
+    private static var _sets: [Nearness] {
+        return [.close, .far, .medium]
+    }
+    
+    var function: FuzzyFunction {
+        switch self {
+        case .close:
+            return TrapetzoidalFunction(0, 40, 60, upperSide: .left)
+        case .medium:
+            return TrapetzoidalFunction(40, 60, 80, 100)
+        case .far:
+            return TrapetzoidalFunction(80, 100, 140, upperSide: .right)
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .close:
+            return "Close"
+        case .far:
+            return "Far"
+        case .medium:
+            return "Medium"
+        }
     }
 }
