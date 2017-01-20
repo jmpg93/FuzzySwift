@@ -10,14 +10,22 @@ import Foundation
 
 public protocol FuzzyRule : CustomStringConvertible {
     var name: String { get }
-    var statement: StatementGroup { get }
+    
+    var statement: ClauseGroup { get }
     var consequent: Clause { get }
     
     func firingStrength(for inputBox: InputBox)  -> Double
 }
 
 public extension FuzzyRule {
+    // CustomStringConvertible
     public var description: String {
         return "\(name): if \(statement) then \(consequent)"
     }
+}
+
+extension Equatable where Self: FuzzyRule {}
+
+func == (lhs: FuzzyRule, rhs: FuzzyRule) -> Bool {
+    return lhs.name == rhs.name
 }

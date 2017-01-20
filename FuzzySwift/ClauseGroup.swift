@@ -8,17 +8,17 @@
 
 import Foundation
 
-public indirect enum StatementGroup : CustomStringConvertible {
+public indirect enum ClauseGroup : CustomStringConvertible {
     case single(Clause)
-    case not(StatementGroup)
-    case and (StatementGroup, StatementGroup)
-    case or (StatementGroup, StatementGroup)
+    case not(ClauseGroup)
+    case and (ClauseGroup, ClauseGroup)
+    case or (ClauseGroup, ClauseGroup)
     
     public var description: String {
         return describe(self)
     }
     
-    private func describe(_ sta: StatementGroup) -> String {
+    private func describe(_ sta: ClauseGroup) -> String {
         switch sta {
         case let .single(sta):
             return sta.description

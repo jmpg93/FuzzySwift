@@ -8,16 +8,26 @@
 
 import Foundation
 
-struct GaussianFunction : FuzzyFunction {
-    var leftLimit: Double {
-        return 0
+public struct GaussianFunction : FuzzyFunction {
+    public let mean: Double
+    public let standardDeviation: Double
+    
+    public init(mean: Double, standardDeviation: Double) {
+        self.mean = mean
+        self.standardDeviation = standardDeviation
     }
     
-    var rightLimit: Double {
-        return 0
+    public var leftLimit: Double {
+        return mean - 4 * standardDeviation
     }
     
-    func membershipDegree(of value: Double) -> Double {
-        return 0
+    public var rightLimit: Double {
+        return mean + 4 * standardDeviation
+    }
+        
+    public func membershipDegree(of value: Double) -> Double {
+        return exp(
+            -(value - mean) * (value - mean) / (2 * standardDeviation * standardDeviation)
+        )
     }
 }

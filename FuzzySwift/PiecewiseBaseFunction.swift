@@ -12,7 +12,7 @@ public protocol PiecewiseBaseFunction : FuzzyFunction {
     var points: [Point] { get }
 }
 
-extension BaseFunction {
+extension PiecewiseBaseFunction {
     
     private var firstPoint : Point {
         return points.first!

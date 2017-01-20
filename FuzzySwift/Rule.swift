@@ -10,14 +10,14 @@ import Foundation
 
 public struct Rule : FuzzyRule {
     public let name: String
-    public let statement: StatementGroup
+    public let statement: ClauseGroup
     public let consequent: Clause
     
     public func firingStrength(for inputBox: InputBox)  -> Double {
         return evaluate(statement, for: inputBox)
     }
     
-    public init(name: String, if statement: StatementGroup, then consequent: Clause) {
+    public init(name: String, if statement: ClauseGroup, then consequent: Clause) {
         self.name = name
         self.statement = statement
         self.consequent = consequent
@@ -27,7 +27,7 @@ public struct Rule : FuzzyRule {
         return Rule(name: name, if: statement, then: consequent)
     }
     
-    fileprivate func evaluate(_ statementGroup: StatementGroup, for inputBox: InputBox) -> Double {
+    fileprivate func evaluate(_ statementGroup: ClauseGroup, for inputBox: InputBox) -> Double {
         switch statementGroup {
         case let .single(sta):
             return sta.evaluate(inputBox)
