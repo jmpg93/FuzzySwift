@@ -17,11 +17,6 @@ class FuzzySwiftFunctionTests: XCTestCase {
         
         // Variables
         let trapezoidal = TrapezoidalVariable()
-        /*
-         case .left: TrapezoidalFunction(0, 20, 40, 60)
-         case .center: TrapezoidalFunction(40, 60, 80, 100)
-         case .right: TrapezoidalFunction(80, 100, 120, 140)
-         */
 
         let noBelongsLeft = trapezoidal.membership(of: TrapezoidalSet.left, value: -1)
         let belongsPoint = trapezoidal.membership(of: TrapezoidalSet.left, value: 0)

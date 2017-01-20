@@ -13,7 +13,7 @@ public class CentroidDefuzzifier : Defuzzier {
     
     public var defaultValue: Double = 0
     
-    public init(intervals: Double = 5) {
+    public init(intervals: Double = 100) {
         self.intervals = intervals
     }
     

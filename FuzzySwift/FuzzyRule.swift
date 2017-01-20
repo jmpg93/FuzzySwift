@@ -14,7 +14,7 @@ public protocol FuzzyRule : CustomStringConvertible {
     var statement: ClauseGroup { get }
     var consequence: Clause { get }
     
-    func firingStrength(for inputBox: FuzzyInput)  -> Double
+    func firingStrength(for inputs: [FuzzyInput])  -> Double
 }
 
 public extension FuzzyRule {

@@ -13,8 +13,9 @@ public struct Rule : FuzzyRule {
     public let statement: ClauseGroup
     public let consequence: Clause
     
-    public func firingStrength(for input: FuzzyInput)  -> Double {
-        return evaluate(statement, for: input)
+    //TODO: Improve using dictionary
+    public func firingStrength(for inputs: [FuzzyInput])  -> Double {
+        return evaluate(statement, for: inputs)
     }
     
     public init(name: String, if statement: ClauseGroup, then consequence: Clause) {
@@ -27,26 +28,26 @@ public struct Rule : FuzzyRule {
         return Rule(name: name, if: statement, then: consequence)
     }
     
-    fileprivate func evaluate(_ statementGroup: ClauseGroup, for input: FuzzyInput) -> Double {
+    fileprivate func evaluate(_ statementGroup: ClauseGroup, for inputs: [FuzzyInput]) -> Double {
         switch statementGroup {
         case let .single(sta):
-            return sta.evaluate(input)
+            return sta.evaluate(inputs)
         case let .not(sta):
-            return 1 - evaluate(sta, for: input)
+            return 1 - evaluate(sta, for: inputs)
         case let .and (leftSta, rightSta):
-            return min(evaluate(leftSta, for: input), evaluate(rightSta, for: input))
+            return min(evaluate(leftSta, for: inputs), evaluate(rightSta, for: inputs))
         case let .or (leftSta, rightSta):
-            return max(evaluate(leftSta, for: input), evaluate(rightSta, for: input))
+            return max(evaluate(leftSta, for: inputs), evaluate(rightSta, for: inputs))
         }
     }
 }
 
 fileprivate extension FuzzyClause {
-    func evaluate(_ input: FuzzyInput) -> Double {
-        if self.variable.name == input.variable.name {
+    func evaluate(_ inputs: [FuzzyInput]) -> Double {
+        for input in inputs where input.variable.name == variable.name {
             return evaluate(value: input.value)
-        } else {
-            return 0
         }
+        
+        return 0
     }
 }

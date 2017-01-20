@@ -10,21 +10,21 @@ import Foundation
 
 public class InferenceManager {
     private let defuzzier: Defuzzier
-    public private(set) var ruleSets : [FuzzyRuleSet]
-    public private(set) var inputs: [String : Input]
+    private var rulesets : [FuzzyRuleset]
+    private var inputs: [String : Input]
     
-    public init(defuzzier: Defuzzier = CentroidDefuzzifier(), ruleSets: [FuzzyRuleSet] = []) {
+    public init(defuzzier: Defuzzier = CentroidDefuzzifier(), ruleSets: [FuzzyRuleset] = []) {
         self.defuzzier = defuzzier
-        self.ruleSets = ruleSets
+        self.rulesets = ruleSets
         self.inputs = [:]
     }
     
     //TODO: Check
-    public func add(ruleSet: FuzzyRuleSet) {
-        ruleSets += [ruleSet]
+    public func add(ruleSet: FuzzyRuleset) {
+        rulesets += [ruleSet]
     }
     
-    public func add(ruleSets: [FuzzyRuleSet]) {
+    public func add(ruleSets: [FuzzyRuleset]) {
         ruleSets.forEach(add)
     }
     
@@ -45,23 +45,23 @@ public class InferenceManager {
         //For every rule we search for a match of evaluating variable and consequence.
         for rule in rules where rule.consequence.variable.name == variable.name {
             //If we got a match, then evaluate the rule with the input and add an output
-            for input in inputs.values {
-                let associatedSet = rule.consequence.set
-                let firingStrength = rule.firingStrength(for: input)
-                
-                output.add(firingStrength: firingStrength, for: associatedSet, by: rule)
-            }
+            
+            let associatedSet = rule.consequence.set
+            let firingStrength = rule.firingStrength(for: Array(inputs.values))
+            
+            output.add(firingStrength: firingStrength, for: associatedSet, by: rule)
+            
         }
         
         return defuzzify(output: output)
     }
     
     private var rules: [Rule] {
-        return ruleSets.flatMap({ $0.rules })
+        return rulesets.flatMap({ $0.rules })
     }
     
     private var variables: [FuzzyVariable] {
-        return ruleSets.flatMap({ $0.variables })
+        return rulesets.flatMap({ $0.variables })
     }
     
 }

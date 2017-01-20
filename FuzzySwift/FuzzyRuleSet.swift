@@ -8,7 +8,8 @@
 
 import Foundation
 
-public protocol FuzzyRuleSet {
+public protocol FuzzyRuleset {
+    var name: String { get }
     var andOperator: FuzzyOperator { get }
     var orOperator: FuzzyOperator { get }
     
@@ -16,7 +17,7 @@ public protocol FuzzyRuleSet {
     var rules: [Rule] { get }
 }
 
-public extension FuzzyRuleSet {
+public extension FuzzyRuleset {
     public var andOperator: FuzzyOperator {
         return MaxOperator()
     }

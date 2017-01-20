@@ -4,11 +4,11 @@ import XCPlayground
 
 let start = CACurrentMediaTime()
 
-let ruleSet: SpeedRuleSet = SpeedRuleSet()
+let ruleset: SpeedRuleSet = SpeedRuleSet()
 
-let system = InferenceManager(ruleSets: [ruleSet])
-system.set(input: 10, for: ruleSet.frontalDistance)
-let evaluated = system.evaluate(variable: ruleSet.speed)
+let system = InferenceManager(ruleSets: [ruleset])
+system.set(input: 10, for: ruleset.frontalDistance)
+let evaluated = system.evaluate(variable: ruleset.speed)
 
 let end = CACurrentMediaTime()
 
