@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol PiecewiseBaseFunction : FuzzyFunction {
+public protocol FuzzyPiecewiseFunction : FuzzyFunction {
     var points: [Point] { get }
 }
 
-public extension PiecewiseBaseFunction {
+public extension FuzzyPiecewiseFunction {
     
     private var firstPoint : Point {
         return points.first!

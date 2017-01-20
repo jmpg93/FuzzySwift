@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TriangularFunction : PiecewiseBaseFunction {
+public struct TriangularFunction : FuzzyPiecewiseFunction {
     public let points: [Point]
     
     public enum UpperSide {

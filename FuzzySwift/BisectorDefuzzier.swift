@@ -9,3 +9,17 @@
 import Foundation
 
 //TODO: Do it.
+public class BisectorDefuzzifier : Defuzzier {
+    
+    public var defaultValue: Double = 0
+    
+    public init() {
+
+    }
+    
+    public func defuzzify(output: Output) -> Double {
+        var sumLow = 0
+        var sumHigh = 0
+        return 0
+    }
+}
