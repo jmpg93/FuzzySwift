@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PiecewiseFunction : BaseFunction {
+public struct PiecewiseFunction : PiecewiseBaseFunction {
     public let points: [Point]
     
     public init(_ points: [Point]) {

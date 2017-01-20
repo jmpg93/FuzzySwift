@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TrapetzoidalFunction : BaseFunction {
+public struct TrapetzoidalFunction : PiecewiseBaseFunction {
     public let points: [Point]
     
     public enum UpperSide {

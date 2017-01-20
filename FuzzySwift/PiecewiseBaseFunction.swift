@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol BaseFunction : FuzzyFunction {
+public protocol PiecewiseBaseFunction : FuzzyFunction {
     var points: [Point] { get }
 }
 
