@@ -1,7 +1,7 @@
 import Foundation
 import FuzzySwift
 
-public struct SpeedRuleSet : FuzzyRuleSet {
+public struct SpeedRuleSet : FuzzyRuleset {
     public var name: String {
         return "SpeedRuleSet"
     }
@@ -20,7 +20,10 @@ public struct SpeedRuleSet : FuzzyRuleSet {
             Rule(name: "Movement 2",
                  if: frontalDistance == Nearness.medium, then: speed => Velocity.normal),
             Rule(name: "Movement 3",
-                 if: frontalDistance == Nearness.close, then: speed => Velocity.slow)
+                 if: frontalDistance == Nearness.close, then: speed => Velocity.slow),
+            Rule(name: "Movement 4",
+                 if: speed == Velocity.slow || frontalDistance == Nearness.medium,
+                 then: frontalDistance => Nearness.close)
         ]
     }
     
