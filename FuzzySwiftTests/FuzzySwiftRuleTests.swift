@@ -68,8 +68,7 @@ class FuzzySwiftRuleTests: XCTestCase {
         let inputFar = Input(variable: frontalDistance, value: 120)
         let inputMedium = Input(variable: leftDistance, value: 60)
         let fs = andRule.firingStrength(for: [inputFar, inputMedium])
-        
-        print(fs)
+
         if (fs != 1) {
             XCTFail()
         }
