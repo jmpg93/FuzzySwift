@@ -3,10 +3,10 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](#carthage) [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-orange.svg)](#swift-package-manager) ![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg) 
 
 ## What is FuzzySwift?
-__FuzzySwift__ FuzzySwift provides basic tools to solve many different problems by using fuzzy logic with a handy syntax.
+__FuzzySwift__ provides basic tools to solve many different problems by using fuzzy logic with a handy syntax.
 
 ###FuzzySet
-A fuzzy set just can be defined just by implementing the __FuzzySet__ procotol.
+A fuzzy set can be defined just by implementing the __FuzzySet__ procotol.
 
 ```swift
 public enum Velocity: FuzzySet {
