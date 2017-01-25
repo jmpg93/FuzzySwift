@@ -1,6 +1,6 @@
 # FuzzySwift 
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](#carthage) [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-orange.svg)](#swift-package-manager) ![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg) ![platforms](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-lightgrey.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](#carthage) [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-orange.svg)](#swift-package-manager) ![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg) 
 
 ## What is FuzzySwift?
 __FuzzySwift__ provides basic tools that allows to solve many different problems by using fuzzy logic with a handy syntax.
@@ -103,7 +103,7 @@ public struct SpeedRuleSet : FuzzyRuleset {
 ```
 
 ###InferenceManager
-InferenceManager will contain every ruleset. The system can evaluate data for given variable inputs.
+InferenceManager can evaluate data for given variable inputs.
 
 ```swift
 let ruleset = SpeedRuleSet()
