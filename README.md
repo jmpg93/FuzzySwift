@@ -108,6 +108,6 @@ InferenceManager can evaluate data for given variable inputs.
 ```swift
 let ruleset = SpeedRuleSet()
 let system = InferenceManager(ruleSets: [ruleset])
-system.set(input: 10, for: ruleset.speed)
+system.set(input: 10, for: ruleset.frontalDistance)
 let evaluated = system.evaluate(variable: ruleset.speed)
 ```
