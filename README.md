@@ -63,7 +63,7 @@ public struct Speed : FuzzyVariable {
 ```
 
 ###FuzzyRuleset
-__FuzzyRuleset__ will contain all the logic and rules of the __FuzzySet__ and __FuzzyVariable__.
+__FuzzyRuleset__ will contain all the rules to set up the fuzzy logic.
 
 ```swift
 public struct SpeedRuleSet : FuzzyRuleset {
@@ -87,7 +87,7 @@ public struct SpeedRuleSet : FuzzyRuleset {
             Rule(name: "Movement 3",
                  if: frontalDistance == Nearness.close, then: speed => Velocity.slow),
             Rule(name: "Movement 4",
-                 if: speed == Velocity.slow || frontalDistance == Nearness.medium, then: frontalDistance => Nearness.close)
+                 if: leftDistance == Nearness.close && rightDistance == Nearness.close, then: speed => Velocity.slow)
         ]
     }
     
