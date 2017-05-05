@@ -5,7 +5,7 @@
 ## What is FuzzySwift?
 __FuzzySwift__ provides basic tools to solve many different problems by using fuzzy logic with a handy syntax.
 
-###FuzzySet
+### FuzzySet
 A fuzzy set can be defined just by implementing the __FuzzySet__ procotol.
 
 ```swift
@@ -62,7 +62,7 @@ public struct Speed : FuzzyVariable {
 }
 ```
 
-###FuzzyRuleset
+### FuzzyRuleset
 __FuzzyRuleset__ will contain all the rules to set up the fuzzy logic.
 
 ```swift
@@ -102,7 +102,7 @@ public struct SpeedRuleSet : FuzzyRuleset {
 }
 ```
 
-###InferenceManager
+### InferenceManager
 InferenceManager can evaluate data for given variable inputs.
 
 ```swift
